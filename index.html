@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cyber Bakery</title>
+    <meta name="description" content="Demo for the tutorial on how to build a 3d model color customizer app with Three.js." />
+    <meta name="keywords" content="three.js, color customizer, app, tutorial, 3d model, blender, javascript" />
+    <meta name="author" content="Kyle Wetton for Codrops" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/nec1oqu.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="headerbox1">
+            <div class="headerline">
+        <div class="title-container">
+        <img src="logo.gif">
+        </div>
+    </div>
+    </div>
+        <div class="headerbox2">
+        </div>
+        <div class="headerbox2">
+        </div>
+        <div class="headerbox4">
+        </div>
+    </header>
+    <section>
+        <canvas id="c"></canvas>
+        <div class="half"></div>
+        <div class="half">
+        <div class="form-container-blur"></div>
+        <div class="form-container">
+            <div class="container-space">
+        <p class="form-title">Order Form</p>
+
+        <div class="page-container">
+            <div class="page" id="page2">
+            <div class="type-container">
+            <div class="sub-title">
+            <p class="sub-title-text">Type</p>
+            <div class="sub-title-line"></div>
+            </div>
+            <div class="types">
+            <div class="typerow">
+            <div class="item">
+            <input type="radio" name="type" value="solid" onclick="checkedSolid()" id="solid" checked>
+            <label for="solid"><span>Solid</span></label>
+            </div>
+            <div class="item">
+            <input type="radio" name="type" value="garden" onclick="checkedGarden()" id="garden">
+            <label for="garden"><span>Garden</span></label> 
+            </div>
+            </div>
+            <div class="typerow">
+                <div class="item">
+            <input type="radio" name="type" value="palette" onclick="checkedPalette()" id="palette">
+            <label for="palette"><span>Palette</span></label>
+                </div>
+                <div class="item">
+            <input type="radio" name="type" value="scenery" onclick="checkedScenery()" id="scenery">
+            <label for="scenery"><span>Scenery</span></label> 
+                </div>
+            </div>    
+            </div>
+            </div>
+            <div class="sub-title">
+            <p class="sub-title-text">Design</p>
+            <div class="sub-title-line"></div>
+            </div>        
+            <div class="solid-control">
+            <select id="gardenDesign" class="designSelect">
+                <option value="garden1" selected>Basic</option>
+                <option value="garden2">Rose</option>
+                <option value="garden3">Daisy</option>
+                <option value="garden4">Cherry blossom</option>
+                </select>
+            <div class="coloritem">
+            <div class="colorLabelBox">
+            <label for="cBase">Base</label>
+            </div>
+            <input type="color" id="cBase" value="#f1f1f1" oninput="selectBaseColor(this.value)">
+            </div>
+            <div class="coloritem" id="palettecolor1">
+                <div class="colorLabelBox">
+                <label for="cPalette1">Color 1</label>
+                </div>
+                <input type="color" id="cPalette1" value="#f1f1f1"oninput="selectColor1Color(this.value)">
+            </div>
+            <div class="coloritem" id="palettecolor2">
+                <div class="colorLabelBox">
+                <label for="cPalette2">Color 2</label>
+                </div>
+                <input type="color" id="cPalette2" value="#f1f1f1"oninput="selectColor2Color(this.value)">
+            </div>
+            <div class="coloritem" id="gardencolor1">
+                <div class="colorLabelBox">
+                    <label for="cGarden1">Petal</label>
+                    </div>
+                    <input type="color" id="cGarden1" value="#f1f1f1"oninput="selectGarden1Color(this.value)">
+            </div>
+            <div class="coloritem" id="gardencolor2">
+                <div class="colorLabelBox">
+                    <label for="cGarden2">Point</label>
+                    </div>
+                    <input type="color" id="cGarden2" value="#f1f1f1"oninput="selectGarden2Color(this.value)">
+            </div>
+            <div class="coloritem" id="gardencolor3">
+                <div class="colorLabelBox">
+                        <label for="cGarden3">Leaves</label>
+                        </div>
+                        <input type="color" id="cGarden3" value="#f1f1f1"oninput="selectGarden3Color(this.value)">
+            </div>
+
+    
+        </div>
+        </div>
+        <div class="page" id="page3">
+            <div class="sub-title">
+                <p class="sub-title-text">Cream</p>
+                <div class="sub-title-line"></div>
+                </div>
+                <select id="gardenDesign" class="designSelect">
+                    <option value="garden1" selected>Basic</option>
+                    <option value="garden1">None</option>
+                    </select>        
+            <div class="coloritem">
+                <div class="colorLabelBox">
+                <label for="cTop">Top</label>
+                </div>
+                <input type="color" id="cTop" value="#f1f1f1" oninput="selectTopColor(this.value)">
+            </div>
+
+            <div class="coloritem">
+                <div class="colorLabelBox">
+                <label for="cSide">Side</label>
+                </div>
+                <input type="color" id="cSide" value="#f1f1f1"oninput="selectSideColor(this.value)">
+            </div>
+
+            <div class="coloritem">
+                <div class="colorLabelBox">
+            <label for="cBottom">Bottom</label>
+            </div>
+            <input type="color" id="cBottom" value="#f1f1f1"oninput="selectBottomColor(this.value)">
+            </div>
+        </div>  
+    </div>
+    <div class="button-container">
+        <div class="prev-button">
+            <div class="arrow" id="arrowL"></div>
+            prev
+        </div>
+        <div class="next-button">
+            next
+            <div class="arrow" id="arrowR"></div>
+        </div>
+        </div>  
+</div>
+</div>
+</div>
+    </section>
+
+    <footer>
+        <div class="footer-gradient"></div>
+    </footer>
+    <script src='https://unpkg.com/three@0.127.0/build/three.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
+    <script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
